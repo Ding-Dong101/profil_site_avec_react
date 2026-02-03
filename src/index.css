@@ -1,4 +1,12 @@
 @import "tailwindcss";
+@theme {
+  --color-light-mint: #bdece3;
+  --color-light-teal: #95e1d3;
+  --color-mint: #6dd6c2;
+
+  --color-dark-gray: #2a2a2a;
+  --color-darker-gray: #111111;
+}
 
 body {
   /* background-color: #2a2a2a; */

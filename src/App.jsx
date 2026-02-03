@@ -185,12 +185,76 @@ function Skills() {
 }
 
 function Education() {
-  const education = [];
+  const certifications = [
+    {
+      text: "CodeCademy certification in Java OOP",
+      link: "https://drive.google.com/file/d/1oSABGZI__sQYjPuVAEnqu7ybUZvhRDZn/view?usp=drive_link",
+    },
+    {
+      text: "CodeCademy certification in JavaScript",
+      link: "https://drive.google.com/file/d/1quWIEtCYgvljEmsZXEtLKaUplthRBb7y/view?usp=drive_link",
+    },
+    {
+      text: "CodeCademy certification in Linear Algebra",
+      link: "https://drive.google.com/file/d/1AD9Ni1slNkkSMRcwpleUI4pAO0RmY4bs/view?usp=drive_link",
+    },
+    {
+      text: "CodeCademy certification in Python",
+      link: "https://drive.google.com/file/d/1rBWFzLi3Ya_1d0hCVC43yD1U5D-7s9u5/view?usp=drive_link",
+    },
+    {
+      text: "UITS Bootcamp",
+      link: "./assets/cert.png",
+    },
+  ];
   return (
-    <section className="mb-12 mx-auto text-center">
+    <section className="mb-12 px-42 text-2xl">
       <div>
-        <h3>Degree:</h3>
-        <p>{"Bachelor of Computer Science, KNUST (Expected 2028)"}</p>
+        <h3 className="text-4xl font-bold text-white mb-4">
+          My Educational background
+        </h3>
+        <ul className="list-disc list- px-8 mb-8">
+          <li>Bachelor of Computer Science, KNUST (Expected 2028)</li>
+          <li>Student of Codecademy</li>
+        </ul>
+        {/* Crtifications */}
+        <div>
+          <h3 className="text-4xl text-white mb-4">Certifications</h3>
+          <ul>
+            {certifications.map((item) => (
+              <li>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-4"
+                >
+                  {item.text}
+                  <img
+                    width="32"
+                    src="https://img.icons8.com/material-outlined/24/download--v1.png"
+                    alt="download--v1"
+                  />
+                </a>
+              </li>
+            ))}
+            {/* <li>
+              <a
+                href="https://drive.google.com/file/d/1oSABGZI__sQYjPuVAEnqu7ybUZvhRDZn/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-4"
+              >
+                CodeCademy certification in Java OOP
+                <img
+                  width="32"
+                  src="https://img.icons8.com/material-outlined/24/download--v1.png"
+                  alt="download--v1"
+                />
+              </a>
+            </li> */}
+          </ul>
+        </div>
       </div>
     </section>
   );
