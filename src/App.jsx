@@ -29,25 +29,25 @@ function NavBar() {
 }
 function ProfilePicture() {
   return (
-    <div className="grid grid-cols-2 grid-rows-2 justify-center p-4 items-center shaded mb-12">
-      {/* personal photo */}
-
+    <div className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 items-center justify-center p-4 gap-8 lg:gap-4 shaded mb-12">
+      {/* 1. Personal Photo */}
       <img
-        className="row-span-2 rounded-xl justify-self-center w-sm"
+        className="row-span-2 rounded-xl justify-self-center w-full max-w-sm object-cover shadow-lg"
         src={"PROFILE_picture.png"}
+        alt="Profile"
       />
 
-      {/* a simple message about me */}
-      <div className="aboutme justify-self-center text-2xl font-light w-10/12 p-4">
+      {/* 2. Simple message about me */}
+      <div className="aboutme justify-self-center text-xl md:text-2xl font-light w-full lg:w-10/12 p-4 text-center lg:text-left">
         {
           "I'm a developer who loves a challenge. Currently studying Computer Science at KNUST, I have dedicated myself to mastering the modern web stack (React, Next.js) while simultaneously training in cybersecurity. I am passionate about continuous learning and applying technical skills to build practical, efficient digital solutions."
         }
       </div>
-      {/* Primary Info */}
-      <div className="grid grid-cols-2 grid-rows-1 gap-6  shadow-xl rounded-2xl p-4 bg-gray-900/30 text-lg w-10/12 justify-self-center backdrop-blur-2xl">
-        <div>
-          {/* <h2 className="text-xl font-bold mb-2">Key</h2> */}
-          <ul className="text-right">
+
+      {/* 3. Primary Info */}
+      <div className="grid grid-cols-2 gap-4 shadow-xl rounded-2xl p-6 bg-gray-900/30 text-base md:text-lg w-full lg:w-10/12 justify-self-center backdrop-blur-2xl">
+        <div className="text-right font-medium text-gray-400">
+          <ul className="space-y-1">
             <li>First Name</li>
             <li>Middle Names</li>
             <li>Last Name</li>
@@ -56,14 +56,13 @@ function ProfilePicture() {
             <li>Phone</li>
           </ul>
         </div>
-        <div>
-          {/* <h2 className="text-xl font-bold mb-2">Value</h2> */}
-          <ul className="text-left">
+        <div className="text-left text-white">
+          <ul className="space-y-1">
             <li>Erastus</li>
             <li>Uriah Nyarku</li>
             <li>Kwaw</li>
             <li>11-02-2005</li>
-            <li>kwawerastus2</li>
+            <li className="truncate">kwawerastus2</li>
             <li>059-8918-102</li>
           </ul>
         </div>
@@ -207,52 +206,49 @@ function Education() {
       link: "./assets/cert.png",
     },
   ];
+
   return (
-    <section className="mb-12 px-42 text-2xl">
-      <div>
-        <h3 className="text-4xl font-bold text-white mb-4">
-          My Educational background
-        </h3>
-        <ul className="list-disc list- px-8 mb-8">
-          <li>Bachelor of Computer Science, KNUST (Expected 2028)</li>
-          <li>Student of Codecademy</li>
-        </ul>
-        {/* Crtifications */}
+    <section className="mb-12 px-6 md:px-12 lg:px-32 xl:px-42">
+      <div className="max-w-4xl mx-auto">
+        {/* Education Section */}
+        <div className="mb-10">
+          <h3 className="text-2xl md:text-4xl font-bold text-white mb-6">
+            My Educational Background
+          </h3>
+          <ul className="list-disc list-inside space-y-3 text-lg md:text-xl text-gray-300">
+            <li>
+              Bachelor of Computer Science, KNUST{" "}
+              <span className="text-sm italic opacity-70">(Expected 2028)</span>
+            </li>
+            <li>Student of Codecademy</li>
+          </ul>
+        </div>
+
+        {/* Certifications Section */}
         <div>
-          <h3 className="text-4xl text-white mb-4">Certifications</h3>
-          <ul>
-            {certifications.map((item) => (
-              <li>
+          <h3 className="text-2xl md:text-4xl font-bold text-white mb-6">
+            Certifications
+          </h3>
+          <ul className="space-y-4">
+            {certifications.map((item, index) => (
+              <li key={index} className="group">
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-4"
+                  className="flex items-center justify-between gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-gray-700"
                 >
-                  {item.text}
+                  <span className="text-base md:text-xl text-gray-300 group-hover:text-white transition-colors">
+                    {item.text}
+                  </span>
                   <img
-                    width="32"
+                    className="w-6 h-6 md:w-8 md:h-8 invert opacity-70 group-hover:opacity-100"
                     src="https://img.icons8.com/material-outlined/24/download--v1.png"
-                    alt="download--v1"
+                    alt="download icon"
                   />
                 </a>
               </li>
             ))}
-            {/* <li>
-              <a
-                href="https://drive.google.com/file/d/1oSABGZI__sQYjPuVAEnqu7ybUZvhRDZn/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex gap-4"
-              >
-                CodeCademy certification in Java OOP
-                <img
-                  width="32"
-                  src="https://img.icons8.com/material-outlined/24/download--v1.png"
-                  alt="download--v1"
-                />
-              </a>
-            </li> */}
           </ul>
         </div>
       </div>
