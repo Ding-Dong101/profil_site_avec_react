@@ -215,7 +215,7 @@ function Education() {
       link: "https://drive.google.com/file/d/1rBWFzLi3Ya_1d0hCVC43yD1U5D-7s9u5/view?usp=drive_link",
     },
     {
-      text: "UITS Bootcamp",
+      text: "UITS Cybersecurity Bootcamp",
       link: certImg,
     },
   ];
