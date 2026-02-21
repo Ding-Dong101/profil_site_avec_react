@@ -1,26 +1,38 @@
 import React from "react";
+import { useState } from "react";
+import certImg from "./assets/cert.png";
 
 function App() {
+  const [activeTab, setActiveTab] = useState("frontend");
   return (
     <div className=" px-4 mainContainer">
-      <NavBar />
+      <NavBar
+        className={`${activeTab === "frontend"}`}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
       <ProfilePicture />
-      <Skills />
-      <Education />
+      {activeTab === "frontend" ? <Frontend /> : <CyberSec />}
     </div>
   );
 }
 
 export default App;
 
-function NavBar() {
+function NavBar({ setActiveTab }) {
   return (
     <nav className="my-4 shaded">
       <ul className="rounded-2xl border-gray-300 border-2 flex gap-4 p-2 justify-center text-lg max-w-max m-auto items-center">
-        <li className="active hover:animate-bounce hover:cursor-pointer ">
+        <li
+          className="active hover:animate-bounce hover:cursor-pointer "
+          onClick={() => setActiveTab("frontend")}
+        >
           Frontend Web Developer
         </li>
-        <li className=" hover:animate-bounce hover:cursor-pointer ">
+        <li
+          className=" hover:animate-bounce hover:cursor-pointer "
+          onClick={() => setActiveTab("cyber")}
+        >
           Cyber Security Analyst
         </li>
       </ul>
@@ -167,9 +179,10 @@ function Skills() {
                     {skill.text}
                   </span>
                   {/* Optional: Simple Progress Bar */}
-                  <div className="w-full bg-slate-800 h-1 mt-2 rounded-full overflow-hidden">
+                  {/* Optimized Progress Bar inside Skills map */}
+                  <div className="w-full bg-slate-800 h-1.5 mt-3 rounded-full overflow-hidden border border-slate-700">
                     <div
-                      className="bg-cyan-500 h-full"
+                      className="bg-cyan-500 h-full shadow-[0_0_8px_#06b6d4]"
                       style={{ width: `${skill.level}%` }}
                     ></div>
                   </div>
@@ -203,7 +216,7 @@ function Education() {
     },
     {
       text: "UITS Bootcamp",
-      link: "./assets/cert.png",
+      link: certImg,
     },
   ];
 
@@ -253,5 +266,74 @@ function Education() {
         </div>
       </div>
     </section>
+  );
+}
+
+function Frontend() {
+  return (
+    <>
+      <Skills />
+      <Education />
+    </>
+  );
+}
+
+function CyberSec() {
+  const cyberskillset = {
+    languages: [{ title: "Python" }],
+  };
+
+  return (
+    <>
+      <section className=" text-white mb-12">
+        <h3 className="text-center mb-12 font-bold text-4xl">
+          Tools I bend to my will
+        </h3>
+
+        {/* Loop through the categories (Frontend, Backend, Tools) */}
+        <div className="flex flex-col gap-10 max-w-5xl mx-auto">
+          {Object.entries(cyberskillset).map(([category, items]) => (
+            <div
+              key={category}
+              className="flex flex-col text-center items-center gap-6 border-b border-slate-800 pb-8 last:border-0"
+            >
+              {/* Category Title */}
+              <h4 className="text-2xl font-semibold capitalize w-32 text-slate-300">
+                {category}
+              </h4>
+
+              {/* Skills List for this Category */}
+              <div className="flex flex-wrap gap-6 justify-center md:justify-start flex-1">
+                {items.map((skill) => (
+                  <div
+                    key={skill.text}
+                    className="flex flex-col items-center group"
+                  >
+                    <div className="bg-slate-900 border border-slate-700 p-4 rounded-xl hover:border-cyan-500 transition-colors duration-300 w-24 h-24 flex items-center justify-center mb-2">
+                      <img
+                        src={skill.icon}
+                        alt={skill.text}
+                        className="w-12 h-12 object-contain group-hover:scale-110 transition-transform"
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-slate-400 group-hover:text-cyan-400">
+                      {skill.text}
+                    </span>
+                    {/* Optional: Simple Progress Bar */}
+                    {/* Optimized Progress Bar inside Skills map */}
+                    <div className="w-full bg-slate-800 h-1.5 mt-3 rounded-full overflow-hidden border border-slate-700">
+                      <div
+                        className="bg-cyan-500 h-full shadow-[0_0_8px_#06b6d4]"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
