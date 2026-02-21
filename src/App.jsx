@@ -279,8 +279,46 @@ function Frontend() {
 }
 
 function CyberSec() {
-  const cyberskillset = {
-    languages: [{ title: "Python" }],
+  const skillsData = {
+    backend: [
+      {
+        text: "Python",
+        level: 75,
+        icon: "https://img.icons8.com/color/100/python.png",
+      },
+      {
+        text: "C++",
+        level: 60,
+        icon: "https://img.icons8.com/color/100/c-plus-plus-logo.png",
+      },
+      {
+        text: "Django",
+        level: 65,
+        icon: "https://img.icons8.com/color/100/django.png",
+      },
+      {
+        text: "Bash Scripting",
+        level: 55,
+        icon: "https://img.icons8.com/color/100/bash.png",
+      },
+    ],
+    tools: [
+      {
+        text: "Kali Linux",
+        level: 50,
+        icon: "https://img.icons8.com/color/100/kali-linux.png",
+      },
+      {
+        text: "Git/GitHub",
+        level: 80,
+        icon: "https://img.icons8.com/color/100/git.png",
+      },
+      {
+        text: "Figma",
+        level: 60,
+        icon: "https://img.icons8.com/color/100/figma.png",
+      },
+    ],
   };
 
   return (
@@ -292,7 +330,7 @@ function CyberSec() {
 
         {/* Loop through the categories (Frontend, Backend, Tools) */}
         <div className="flex flex-col gap-10 max-w-5xl mx-auto">
-          {Object.entries(cyberskillset).map(([category, items]) => (
+          {Object.entries(skillsData).map(([category, items]) => (
             <div
               key={category}
               className="flex flex-col text-center items-center gap-6 border-b border-slate-800 pb-8 last:border-0"
