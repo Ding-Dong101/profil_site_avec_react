@@ -53,7 +53,7 @@ If you want to view the source code locally, follow these steps:
 
 ---
 
-# _© 2026 [Your Name]. Built with React & ☕._
+# _© 2026 N_U_K_E. Built with React & ☕._
 
 # React + Vite
 
